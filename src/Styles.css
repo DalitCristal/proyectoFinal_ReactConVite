@@ -1,0 +1,23 @@
+:root {
+  --color-principal: #d4ac78;
+  --naranja-calido: #ffb347;
+  --marron-amarillento: #8e7d5a;
+  --gris-oscuro: #4e4d4a;
+  --tono-crema-neutro: #fffdd0;
+  --white: #ffffff;
+  --black: #000000;
+  --font: "Open Sans", sans-serif;
+}
+
+@media only screen and (max-width: 767px/* 480px */) {
+  /* Estilos para pantallas de teléfonos móviles */
+  h1 {
+    font-family: "Open Sans", sans-serif;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  /* Estilos para pantallas de tabletas */
+}
+@media only screen and (min-width: 1024px) {
+  /* Estilos para pantallas de PC */
+}

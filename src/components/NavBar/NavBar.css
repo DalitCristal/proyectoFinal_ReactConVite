@@ -1,0 +1,84 @@
+.ActiveOption {
+  text-transform: uppercase;
+  list-style-type: none;
+  background-color: var(--naranja-calido);
+  color: var(--black);
+  padding: 0.6rem;
+  border-radius: 6px;
+  text-decoration: none;
+}
+.Option {
+  text-transform: uppercase;
+  list-style-type: none;
+  background-color: var(--gris-oscuro);
+  color: var(--white);
+  padding: 0.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  margin: 1rem;
+}
+/* Estilos para pantallas de teléfonos móviles */
+@media only screen and (max-width: 767px) {
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: start;
+  }
+  .navBar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+}
+/* Estilos para pantallas tablets */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .btnNav:hover {
+    color: var(--gris-oscuro);
+    font-size: 1rem;
+    border-bottom: solid 0.5px var(--color-principal);
+  }
+  .buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .navBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+}
+/* Estilos para pantallas de tipo PC */
+@media only screen and (min-width: 1024px) {
+  .btnNav {
+    text-transform: uppercase;
+    list-style-type: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    color: var(--black);
+    font-size: 1rem;
+    font-family: var(--font);
+    padding: 0.8rem;
+  }
+  .btnNav:hover {
+    color: var(--gris-oscuro);
+    font-size: 1.1rem;
+    border-bottom: solid 0.5px var(--color-principal);
+  }
+  .buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .navBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+}

@@ -1,0 +1,18 @@
+:root {
+  --color-principal: #d4ac78;
+  --naranja-calido: #ffb347;
+  --marron-amarillento: #8e7d5a;
+  --gris-oscuro: #4e4d4a;
+  --tono-crema-neutro: #fffdd0;
+  --white: #ffffff;
+  --black: #000000;
+  --font: "Open Sans", sans-serif;
+}
+* {
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+}
+.App {
+  background-color: #f1d4b7;
+}

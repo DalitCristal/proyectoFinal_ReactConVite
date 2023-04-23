@@ -1,0 +1,7 @@
+.finalizarCompra {
+  background-color: var(--gris-oscuro);
+  color: var(--white);
+  padding: 0.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+}

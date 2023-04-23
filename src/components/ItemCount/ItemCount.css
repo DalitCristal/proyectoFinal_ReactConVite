@@ -1,0 +1,19 @@
+.btn {
+  background-color: var(--gris-oscuro);
+  color: var(--white);
+  padding: 0.5rem;
+  border-radius: 6px;
+}
+.controls {
+  margin: 1rem;
+}
+.counter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.number {
+  font-size: 1.5rem;
+  padding: 1rem;
+}

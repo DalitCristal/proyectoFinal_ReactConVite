@@ -1,0 +1,16 @@
+.card {
+  width: 345px;
+  padding: 1rem;
+  margin: 0.5rem;
+  margin-top: 2rem;
+}
+.img {
+  border-radius: 5px;
+}
+.option {
+  background-color: var(--gris-oscuro);
+  color: var(--white);
+  padding: 0.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+}
