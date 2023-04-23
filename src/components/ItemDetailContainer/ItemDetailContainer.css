@@ -1,0 +1,5 @@
+.ItemDetailContainer {
+  height: 100vh;
+  display: flex;
+  align-items: top;
+}

@@ -1,49 +1,58 @@
-.ActiveOption {
-  text-transform: uppercase;
-  list-style-type: none;
-  background-color: var(--naranja-calido);
-  color: var(--black);
-  padding: 0.6rem;
-  border-radius: 6px;
-  text-decoration: none;
-}
-.Option {
-  text-transform: uppercase;
-  list-style-type: none;
-  background-color: var(--gris-oscuro);
-  color: var(--white);
-  padding: 0.5rem;
-  border-radius: 6px;
-  text-decoration: none;
-  margin: 1rem;
-}
 /* Estilos para pantallas de teléfonos móviles */
 @media only screen and (max-width: 767px) {
+  .ActiveOption {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    list-style-type: none;
+    background-color: var(--naranja-calido);
+    color: var(--black);
+    padding: 0.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+  }
+  .Option {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    background-color: var(--gris-oscuro);
+    color: var(--white);
+    padding: 0.4rem;
+    border-radius: 6px;
+    text-decoration: none;
+    margin: 0.2rem;
+  }
   .buttons {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    align-items: start;
+    align-items: center;
+    padding: 0.5rem;
   }
   .navBar {
     display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+    flex-direction: row;
     align-items: center;
   }
 }
 /* Estilos para pantallas tablets */
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
-  .btnNav:hover {
-    color: var(--gris-oscuro);
-    font-size: 1rem;
-    border-bottom: solid 0.5px var(--color-principal);
+  .ActiveOption {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    list-style-type: none;
+    background-color: var(--naranja-calido);
+    color: var(--black);
+    padding: 0.6rem;
+    border-radius: 6px;
+    text-decoration: none;
   }
-  .buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
+  .Option {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    background-color: var(--gris-oscuro);
+    color: var(--white);
+    padding: 0.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    margin: 0.4rem;
   }
   .navBar {
     display: flex;
@@ -54,26 +63,25 @@
 }
 /* Estilos para pantallas de tipo PC */
 @media only screen and (min-width: 1024px) {
-  .btnNav {
+  .ActiveOption {
+    font-size: 1rem;
     text-transform: uppercase;
     list-style-type: none;
-    cursor: pointer;
-    text-transform: uppercase;
+    background-color: var(--naranja-calido);
     color: var(--black);
-    font-size: 1rem;
-    font-family: var(--font);
-    padding: 0.8rem;
+    padding: 0.6rem;
+    border-radius: 6px;
+    text-decoration: none;
   }
-  .btnNav:hover {
-    color: var(--gris-oscuro);
-    font-size: 1.1rem;
-    border-bottom: solid 0.5px var(--color-principal);
-  }
-  .buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
+  .Option {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    background-color: var(--gris-oscuro);
+    color: var(--white);
+    padding: 0.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    margin: 0.5rem;
   }
   .navBar {
     display: flex;

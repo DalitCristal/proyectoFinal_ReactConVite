@@ -1,5 +1,6 @@
 //COMPONENTS
 import ItemList from "../ItemList/ItemList.jsx";
+import Spinner from "../Spinner/Spinner.jsx";
 //FIREBASE
 import { db } from "../../services/firebase/firebaseConfig.js";
 import { collection, query, getDocs, where } from "firebase/firestore";
@@ -10,11 +11,13 @@ import { useParams } from "react-router-dom";
 import "./ItemListContainer.css";
 
 const ItemListContainer = ({ greeting }) => {
+  const [loading, setLoading] = useState(false);
   const [products, setProducts] = useState([]);
   const { categoryId } = useParams();
   const q = query(collection(db, "products"));
 
   useEffect(() => {
+    setLoading(true);
     const collectionRef = categoryId
       ? query(collection(db, "products"), where("category", "==", categoryId))
       : collection(db, "products");
@@ -32,15 +35,16 @@ const ItemListContainer = ({ greeting }) => {
       })
       .catch((error) => {
         console.error(error);
-      });
-    /* .finally(() => {
+      })
+      .finally(() => {
         setLoading(false);
-      }); */
+      });
   }, [categoryId]);
   return (
     <div className="container">
       <h1 className="titulo">{greeting}</h1>
       <ItemList products={products} />
+      {loading ? <Spinner /> : null}
     </div>
   );
 };

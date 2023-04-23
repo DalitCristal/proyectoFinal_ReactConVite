@@ -1,1 +1,12 @@
-
+.productCart {
+  padding: 1rem;
+  margin: 0.5rem;
+  border: solid 1px #000;
+  background-color: #fff;
+}
+.detailsCompra {
+  margin-left: 1rem;
+}
+.tituloCart {
+  padding-bottom: 0.5rem;
+}

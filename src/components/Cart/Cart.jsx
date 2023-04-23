@@ -25,16 +25,20 @@ const Cart = () => {
 
   return (
     <>
-      {cart.map((p) => (
-        <CartItem key={p.id} {...p} />
-      ))}
-      <h3>Total: ${total} </h3>
-      <button onClick={() => clearCart()} className="btn">
-        Vaciar carrito
-      </button>
-      <Link to="/checkout" className="option">
-        Checkout
-      </Link>
+      <section className="cartConProducts">
+        <section className="containerPorducts">
+          {cart.map((p) => (
+            <CartItem key={p.id} {...p} />
+          ))}
+        </section>
+        <h3 className="total">Total: ${total} </h3>
+        <button onClick={() => clearCart()} className="btn">
+          Vaciar carrito
+        </button>
+        <Link to="/checkout" className="option">
+          Checkout
+        </Link>
+      </section>
     </>
   );
 };

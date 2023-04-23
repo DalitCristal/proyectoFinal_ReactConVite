@@ -1,5 +1,3 @@
-//STYLES
-import "./CartWidget";
 //ICONO
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 //HOOK
@@ -15,11 +13,17 @@ const CartWidget = () => {
   return (
     <Link
       to="/cart"
-      className="cartWidget"
-      style={{ display: totalQuantity > 0 ? "block" : "none" }}
+      style={{
+        backgroundColor: "#4e4d4a",
+        color: "#ffffff",
+        padding: "0.5rem",
+        borderRadius: "6px",
+        textDecoration: "none",
+        display: totalQuantity > 0 ? "block" : "none",
+      }}
     >
       <ShoppingCartIcon />
-      <strong>{totalQuantity}</strong>
+      {totalQuantity}
     </Link>
   );
 };
