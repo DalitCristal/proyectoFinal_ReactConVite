@@ -2,6 +2,7 @@
 import "./ItemDetailContainer.css";
 //COMPONENTS
 import ItemDetail from "../ItemDetail/ItemDetail";
+import Spinner from "../Spinner/Spinner";
 //CUSTOM HOOKS
 import { productConIva } from "../CustomHoc/ProductsConIva";
 //HOOKS
@@ -40,7 +41,11 @@ const ItemDetailContainer = () => {
 
   return (
     <div className="ItemDetailContainer" key={id}>
-      <ProductConIVA {...product} />
+      {loading ? (
+        <Spinner />
+      ) : product.id ? (
+        <ProductConIVA {...product} />
+      ) : null}
     </div>
   );
 };

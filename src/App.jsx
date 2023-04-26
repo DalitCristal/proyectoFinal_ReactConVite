@@ -1,6 +1,7 @@
 //COMPONENTS
 import NavBar from "./components/NavBar/NavBar.jsx";
 import Cart from "./components/Cart/Cart.jsx";
+import Footer from "./components/Footer/Footer.jsx";
 //CONTEXT
 import { CartProvider } from "./context/CartContext.jsx";
 //PAGES
@@ -14,7 +15,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 //STYLES
 import "./App.css";
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <BrowserRouter>
@@ -28,10 +29,11 @@ function App() {
             <Route path="/cart" element={<Cart />} />
             <Route path="*" element={<Error />} />
           </Routes>
+          <Footer />
         </CartProvider>
       </BrowserRouter>
     </div>
   );
-}
+};
 
 export default App;

@@ -1,0 +1,13 @@
+:root {
+  --gris-oscuro: #4e4d4a;
+  --white: #ffffff;
+}
+.footer {
+  text-align: center;
+  background-color: var(--gris-oscuro);
+  padding: 0.5rem;
+}
+.footer > a {
+  text-decoration: none;
+  color: var(--white);
+}

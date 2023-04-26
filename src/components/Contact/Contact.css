@@ -1,0 +1,40 @@
+:root {
+  --marron-amarillento: #8e7d5a;
+  --white: #ffffff;
+  --black: #000000;
+  --color-boton: rgba(20, 155, 246, 0.996);
+  --disabled: #ff0000;
+}
+.btnEnviar {
+  background-color: var(--color-boton);
+  border: none;
+  width: 400px;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+.btnDisable {
+  background-color: var(--disabled);
+  color: var(--white);
+  border: none;
+  width: 400px;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  cursor: no-drop;
+}
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.textField {
+  width: 400px;
+  height: 2rem;
+  background-color: var(--white);
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border: none;
+}
