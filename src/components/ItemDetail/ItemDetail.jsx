@@ -24,7 +24,7 @@ const ItemDetail = ({ id, name, img, category, description, price, stock }) => {
   };
 
   return (
-    <div>
+    <>
       <Card className="card">
         <div>
           <CardMedia component="img" image={img} alt={name} className="img" />
@@ -52,7 +52,7 @@ const ItemDetail = ({ id, name, img, category, description, price, stock }) => {
           <ItemCount initial={1} stock={stock} onAdd={handleOnAdd} />
         )}
       </Card>
-    </div>
+    </>
   );
 };
 

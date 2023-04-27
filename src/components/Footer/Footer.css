@@ -2,12 +2,12 @@
   --gris-oscuro: #4e4d4a;
   --white: #ffffff;
 }
-.footer {
+footer {
   text-align: center;
   background-color: var(--gris-oscuro);
   padding: 0.5rem;
 }
-.footer > a {
+footer > a {
   text-decoration: none;
   color: var(--white);
 }

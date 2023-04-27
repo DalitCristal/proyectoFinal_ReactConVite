@@ -38,7 +38,10 @@ const ContactForm = () => {
           dirty,
         }) => (
           <form className="form" onSubmit={handleSubmit}>
-            <h2>Form</h2>
+            <h3 className="tituloForm"> Formulario de consultas</h3>
+            <p>
+              Completa el formulario y nos contactaremos contigo a la brevedad.
+            </p>
             <input
               name="name"
               type="text"
