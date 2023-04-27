@@ -12,7 +12,6 @@ const yupSchema = yup.object({
 });
 
 const submitHandler = (values, resetForm) => {
-  console.log(values);
   resetForm();
 };
 
