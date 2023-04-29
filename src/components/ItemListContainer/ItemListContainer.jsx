@@ -1,8 +1,9 @@
 //COMPONENTS
 import ItemList from "../ItemList/ItemList.jsx";
 import Spinner from "../Spinner/Spinner.jsx";
-//FIREBASE
+//BASE DE DATOS
 import { db } from "../../services/firebase/firebaseConfig.js";
+//FUNCIONES FIREBASE
 import { collection, query, getDocs, where } from "firebase/firestore";
 //HOOKS
 import { useState, useEffect } from "react";
