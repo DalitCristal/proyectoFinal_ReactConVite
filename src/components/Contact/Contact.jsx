@@ -4,6 +4,10 @@ import "./Contact.css";
 import { Formik } from "formik";
 //YUP
 import * as yup from "yup";
+//Base de datos
+import { db } from "../../services/firebase/firebaseConfig";
+//Funciones de firebase
+import { collection, addDoc } from "firebase/firestore";
 
 const yupSchema = yup.object({
   name: yup.string().min(1).max(40).required(),
@@ -12,6 +16,9 @@ const yupSchema = yup.object({
 });
 
 const submitHandler = (values, resetForm) => {
+  addDoc(collection(db, "consultas"), {
+    ...values,
+  });
   resetForm();
 };
 
