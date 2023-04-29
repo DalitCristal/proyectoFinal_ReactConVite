@@ -13,6 +13,7 @@ const yupSchema = yup.object({
   name: yup.string().min(1).max(40).required(),
   telefono: yup.string().min(9).max(15).required(),
   email: yup.string().email().required(),
+  consulta: yup.string().required(),
 });
 
 const submitHandler = (values, resetForm) => {
@@ -30,6 +31,7 @@ const ContactForm = () => {
           name: "",
           telefono: "",
           email: "",
+          consulta: "",
         }}
         onSubmit={(values, { resetForm }) => submitHandler(values, resetForm)}
         validationSchema={yupSchema}
@@ -82,7 +84,17 @@ const ContactForm = () => {
             {errors.email && (
               <span style={{ color: "red" }}>{errors.email} </span>
             )}
-
+            <textarea
+              name="consulta"
+              type="consulta"
+              className="textarea"
+              placeholder="Consulta"
+              value={values.consulta}
+              onChange={handleChange}
+            />
+            {errors.consulta && (
+              <span style={{ color: "red" }}>{errors.consulta} </span>
+            )}
             <button
               type="submit"
               className={!(isValid && dirty) ? "btnDisable" : "btnEnviar"}
