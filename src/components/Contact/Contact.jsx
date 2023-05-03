@@ -8,6 +8,9 @@ import * as yup from "yup";
 import { db } from "../../services/firebase/firebaseConfig";
 //Funciones de firebase
 import { collection, addDoc } from "firebase/firestore";
+//Toastify
+import Toastify from "toastify-js";
+import "toastify-js/src/toastify.css";
 
 const yupSchema = yup.object({
   name: yup.string().min(1).max(40).required(),
@@ -20,6 +23,14 @@ const submitHandler = (values, resetForm) => {
   addDoc(collection(db, "consultas"), {
     ...values,
   });
+  Toastify({
+    text: "Consulta enviada con éxito!",
+    className: "info",
+    position: "center",
+    style: {
+      background: "linear-gradient(to right, #d4ac78, #4e4d4a)",
+    },
+  }).showToast();
   resetForm();
 };
 const initialValues = {

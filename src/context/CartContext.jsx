@@ -24,7 +24,7 @@ export const CartProvider = ({ children }) => {
         text: "El producto ya fue agregado",
         className: "info",
         style: {
-          background: "linear-gradient(to right, #805c00, #800080)",
+          background: "linear-gradient(to right, #d4ac78, #4e4d4a)",
         },
       }).showToast();
     }

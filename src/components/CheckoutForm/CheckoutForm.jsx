@@ -5,11 +5,14 @@ import { Formik } from "formik";
 //YUP
 import * as yup from "yup";
 //HOOKS
-import { useState, useEffect } from "react";
+import { useState } from "react";
 //Base de datos
 import { db } from "../../services/firebase/firebaseConfig";
 //Funciones de firebase
-import { collection, addDoc, getDocs, query, where } from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
+//Toastify
+import Toastify from "toastify-js";
+import "toastify-js/src/toastify.css";
 
 const yupSchema = yup.object({
   name: yup.string().min(1).max(40).required(),
@@ -21,12 +24,17 @@ const submitHandler = (values, resetForm) => {
   addDoc(collection(db, "ussers"), {
     ...values,
   });
+  Toastify({
+    text: "Datos enviados con éxito!",
+    className: "info",
+    style: {
+      background: "linear-gradient(to right, #d4ac78, #4e4d4a)",
+    },
+  }).showToast();
   resetForm();
 };
 
 const CheckoutForm = () => {
-  const [ordenId, setOrdenId] = useState([]);
-
   return (
     <>
       <Formik
@@ -38,15 +46,7 @@ const CheckoutForm = () => {
         onSubmit={(values, { resetForm }) => submitHandler(values, resetForm)}
         validationSchema={yupSchema}
       >
-        {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          handleSubmit,
-          isValid,
-          dirty,
-        }) => (
+        {({ values, errors, handleChange, handleSubmit, isValid, dirty }) => (
           <form className="form" onSubmit={handleSubmit}>
             <h3 className="tituloForm"> Formulario de validación</h3>
             <input
