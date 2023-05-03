@@ -22,17 +22,17 @@ const submitHandler = (values, resetForm) => {
   });
   resetForm();
 };
-
+const initialValues = {
+  name: "",
+  telefono: "",
+  email: "",
+  consulta: "",
+};
 const ContactForm = () => {
   return (
     <>
       <Formik
-        initialValues={{
-          name: "",
-          telefono: "",
-          email: "",
-          consulta: "",
-        }}
+        initialValues={initialValues}
         onSubmit={(values, { resetForm }) => submitHandler(values, resetForm)}
         validationSchema={yupSchema}
       >

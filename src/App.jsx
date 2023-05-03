@@ -2,7 +2,7 @@
 import NavBar from "./components/NavBar/NavBar.jsx";
 import Cart from "./components/Cart/Cart.jsx";
 import Footer from "./components/Footer/Footer.jsx";
-import Checkout from "./components/Checkout/Checkout.jsx";
+import CheckoutForm from "./components/CheckoutForm/CheckoutForm.jsx";
 
 //CONTEXT
 import { CartProvider } from "./context/CartContext.jsx";
@@ -29,7 +29,7 @@ const App = () => {
             <Route path="/item/:id" element={<Details />} />
             <Route path="/category/:categoryId" element={<Category />} />
             <Route path="/cart" element={<Cart />} />
-            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/checkout" element={<CheckoutForm />} />
             <Route path="*" element={<Error />} />
           </Routes>
           <Footer />

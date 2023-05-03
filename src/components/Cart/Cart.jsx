@@ -10,7 +10,7 @@ import CartItem from "../CartItem/CartItem";
 import { Link } from "react-router-dom";
 
 const Cart = () => {
-  const { cart, clearCart, totalQuantity, total } = useContext(CartContext);
+  const { cart, emptyCart, totalQuantity, total } = useContext(CartContext);
 
   if (totalQuantity === 0) {
     return (
@@ -32,7 +32,7 @@ const Cart = () => {
           ))}
         </section>
         <h3 className="total">Total: ${total} </h3>
-        <button onClick={() => clearCart()} className="btn">
+        <button onClick={() => emptyCart()} className="btn">
           Vaciar carrito
         </button>
         <Link to="/checkout" className="option">

@@ -1,95 +1,100 @@
-//STYLE
-import "./Checkout.css";
-//FORMIK
-import { Formik } from "formik";
-//YUP
-import * as yup from "yup";
-//Base de datos
+import React from "react";
+import { useState, useContext } from "react";
 import { db } from "../../services/firebase/firebaseConfig";
-//Funciones de firebase
-import { collection, addDoc } from "firebase/firestore";
-
-const yupSchema = yup.object({
-  name: yup.string().min(1).max(40).required(),
-  telefono: yup.string().min(9).max(15).required(),
-  email: yup.string().email().required(),
-});
-
-const submitHandler = (values, resetForm) => {
-  addDoc(collection(db, "ussers"), {
-    ...values,
-  });
-  resetForm();
-};
+import CheckoutForm from "../CheckoutForm/CheckoutForm";
+import Spinner from "../Spinner/Spinner";
+import { CartContext } from "../../context/CartContext";
+import {
+  Timestamp,
+  addDoc,
+  collection,
+  documentId,
+  getDocs,
+  query,
+  writeBatch,
+} from "firebase/firestore";
 
 const Checkout = () => {
+  const [loading, setLoading] = useState(false);
+  const [ordenId, setOrdenId] = useState([]);
+
+  const { cart, total, emptyCart } = useContext(CartContext);
+
+  const createOrder = async ({ name, telefono, email }) => {
+    setLoading(true);
+
+    try {
+      const objOrden = {
+        buyer: {
+          name,
+          telefono,
+          email,
+        },
+        items: cart,
+        total: total,
+        date: Timestamp.fromDate(new Date()),
+      };
+
+      const batch = writeBatch(db);
+
+      const outOfStock = [];
+
+      const ids = cart.map((prod) => prod.id);
+
+      const productsRef = collection(db, "products");
+
+      const productsAddedFromFirestore = await getDocs(
+        query(productsRef, where(documentId(), "in", ids))
+      );
+
+      const { docs } = productsAddedFromFirestore;
+
+      docs.forEach((doc) => {
+        const dataDoc = doc.data();
+        const stockDb = dataDoc.stockDb;
+
+        const productAddedToCart = cart.find((prod) => prod.id === doc.id);
+        const prodQuantity = productAddedToCart?.quantity;
+
+        if (stockDb >= prodQuantity) {
+          batch.update(doc.ref, { stock: stockDb - prodQuantity });
+        } else {
+          outOfStock.push({ id: doc.id, ...dataDoc });
+        }
+      });
+
+      if (outOfStock.length === 0) {
+        await batch.commit();
+
+        const ordenRef = collection(db, "ussers");
+
+        const ordenAdded = await addDoc(ordenRef, objOrden);
+
+        setOrdenId(ordenAdded.id);
+        emptyCart();
+      } else {
+        console.error("hay productos que estan fuera de stock");
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) {
+    return <h1>Se esta generando su orden, aguarde un moemnto por favor</h1>;
+  }
+
+  if (ordenId) {
+    return <h1>El id de su compra es: {ordenId} </h1>;
+  }
+
   return (
-    <>
-      <Formik
-        initialValues={{
-          name: "",
-          telefono: "",
-          email: "",
-        }}
-        onSubmit={(values, { resetForm }) => submitHandler(values, resetForm)}
-        validationSchema={yupSchema}
-      >
-        {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          handleSubmit,
-          isValid,
-          dirty,
-        }) => (
-          <form className="form" onSubmit={handleSubmit}>
-            <h3 className="tituloForm"> Formulario de validación</h3>
-            <input
-              name="name"
-              type="text"
-              className="textField"
-              placeholder="Name y Apellido"
-              value={values.name}
-              onChange={handleChange}
-            />
-            {errors.name && (
-              <span style={{ color: "red" }}>{errors.name} </span>
-            )}
-            <input
-              name="telefono"
-              type="text"
-              className="textField"
-              placeholder="Teléfono"
-              value={values.telefono}
-              onChange={handleChange}
-            />
-            {errors.telefono && (
-              <span style={{ color: "red" }}>{errors.telefono} </span>
-            )}
-
-            <input
-              name="email"
-              type="email"
-              className="textField"
-              placeholder="Email"
-              value={values.email}
-              onChange={handleChange}
-            />
-            {errors.email && (
-              <span style={{ color: "red" }}>{errors.email} </span>
-            )}
-
-            <button
-              type="submit"
-              className={!(isValid && dirty) ? "btnDisable" : "btnEnviar"}
-            >
-              Enviar
-            </button>
-          </form>
-        )}
-      </Formik>
-    </>
+    <div>
+      <h1>Checkout</h1>
+      {loading ? <Spinner /> : <CheckoutForm onConfirm={createOrder} />}
+    </div>
   );
 };
 

@@ -1,7 +1,8 @@
 # Crystal Gem
 
 Este es mi proyecto final de react, Comisión 39625, del curso de coderhouse.
-Utilice vite, este es una herramienta para crear rápidamente un proyecto a partir de una plantilla básica.
+Este proyecto se inició con [vitejs.dev]
+Este es una herramienta para crear rápidamente un proyecto a partir de una plantilla básica.
 Trata de un e-commerce de ropa.
 https://github.com/DalitCristal/proyectoFinal_ReactConVite.git
 
