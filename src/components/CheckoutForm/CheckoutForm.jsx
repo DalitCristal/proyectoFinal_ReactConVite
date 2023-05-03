@@ -1,57 +1,3 @@
-/* //HOOKS
-import { useState } from "react";
-
-const CheckoutForm = ({ onConfirm }) => {
-  const [nombre, setNombre] = useState("");
-  const [telefono, setTelefono] = useState("");
-  const [email, setEmail] = useState("");
-
-  const handleConfirm = (event) => {
-    event.preventDefault();
-
-    const userData = {
-      nombre,
-      telefono,
-      email,
-    };
-    onConfirm(userData);
-  };
-
-  return (
-    <div>
-      <form onSubmit={handleConfirm}>
-        <label>
-          Nombre:
-          <input
-            type="text"
-            value={nombre}
-            onChange={({ target }) => setNombre(target.value)}
-          />
-        </label>
-        <label>
-          Telefono:
-          <input
-            type="text"
-            value={telefono}
-            onChange={({ target }) => setTelefono(target.value)}
-          />
-        </label>
-        <label>
-          Email:
-          <input
-            type="text"
-            value={email}
-            onChange={({ target }) => setEmail(target.value)}
-          />
-        </label>
-        <div>
-          <button type="submit">Crear orden</button>
-        </div>
-      </form>
-    </div>
-  );
-};
-export default CheckoutForm; */
 //STYLE
 import "./CheckoutForm.css";
 //FORMIK
@@ -80,20 +26,6 @@ const submitHandler = (values, resetForm) => {
 
 const CheckoutForm = () => {
   const [ordenId, setOrdenId] = useState([]);
-
-  useEffect(() => {
-    const ordenes = collection(db, "ussers");
-
-    getDocs(ordenes)
-      .then((respuesta) => {
-        setOrdenId(
-          respuesta.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
-        );
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
 
   return (
     <>
@@ -161,14 +93,6 @@ const CheckoutForm = () => {
           </form>
         )}
       </Formik>
-      <div>
-        <h2>CONSULTAS</h2>
-        {ordenId.map((orden) => (
-          <div key={orden.id}>
-            <h2>{orden.id}</h2>
-          </div>
-        ))}
-      </div>
     </>
   );
 };
