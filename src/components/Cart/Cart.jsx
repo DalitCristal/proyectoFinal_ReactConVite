@@ -27,8 +27,8 @@ const Cart = () => {
     <>
       <section className="cartConProducts">
         <section className="containerPorducts">
-          {cart.map((p) => (
-            <CartItem key={p.id} {...p} />
+          {cart.map((p, index) => (
+            <CartItem key={index} {...p} />
           ))}
         </section>
         <h3 className="total">Total: ${total} </h3>
